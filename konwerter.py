@@ -1,5 +1,6 @@
 import argparse
 import os
+import json
 
 parser = argparse.ArgumentParser(description='XML, JSON, YML Converter!')
 
@@ -15,3 +16,12 @@ else:
 
 input_ex = arguments.input_file.split('.')[-1]
 input_ex = input_ex.lower()
+
+if input_ex == 'json':
+    with open(arguments.input_file, 'r') as file:
+        try:
+	    data = json.load(file)
+	except json.JSONDecodeError as e:
+	    print("Invalid filr format!"), str(e))
+	    exit(1)
+
