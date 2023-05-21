@@ -1,6 +1,8 @@
 import argparse
 import os
 import json
+import yaml
+import xmltodict
 
 parser = argparse.ArgumentParser(description='XML, JSON, YML Converter!')
 
@@ -22,6 +24,21 @@ if input_ex == 'json':
         try:
 	    data = json.load(file)
 	except json.JSONDecodeError as e:
-	    print("Invalid filr format!"), str(e))
+	    print("Invalid filr format!", str(e))
 	    exit(1)
 
+
+def same_ex():
+    print("Format of input and output files is the same")
+    exit(1)
+
+
+def json_xml():
+    file_xml = open(arguments.output_file, "w")
+    xmltodict.unparse(data, output=xml_file, pretty=True)
+    file_xml.close()
+
+
+def json_yaml():
+    with open(arguments.output_file, 'w') as file:
+	yaml.dump(data, file, indent=4)
