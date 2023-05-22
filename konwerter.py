@@ -27,6 +27,14 @@ if input_ex == 'json':
 	    print("Invalid filr format!", str(e))
 	    exit(1)
 
+elif input_ex == "yml":
+    with open_arguments.input_file, 'r') as file:
+	try:
+	    data = yaml.safe_load(file)
+
+	    except Exception as e:
+		print("Failed to read the file", str(e))
+		exit(1)
 
 def same_ex():
     print("Format of input and output files is the same")
