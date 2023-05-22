@@ -36,6 +36,14 @@ elif input_ex == "yml":
 	    print("Failed to read the file!", str(e))
 	    exit(1)
 
+elif input_ex == "xml":
+    try:
+	with open(arguments.input_file) as file_xml:
+	    data = xmltodict.parse(file_xml.read())
+    except xmltodict.ExpatError as e:
+	print("Invalid file format.", str(e))
+	exit(1)
+
 
 def same_ex():
     print("Format of input and output files is the same")
