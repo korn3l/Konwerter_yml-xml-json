@@ -25,27 +25,27 @@ output_ex = output_ex.lower()
 if input_ex == 'json':
     with open(arguments.input_file, 'r') as file:
         try:
-	    data = json.load(file)
-	except json.JSONDecodeError as e:
-	    print("Invalid file format!", str(e))
-	    exit(1)
+            data = json.load(file)
+        except json.JSONDecodeError as e:
+            print('Invalid format', str(e))
+            exit(1)
 
 elif input_ex == "yml":
     with open(arguments.input_file, 'r') as file:
-	try:
-	    data = yaml.safe_load(file)
+        try:
+            data = yaml.safe_load(file)
 
-	except Exception as e:
-	    print("Failed to read the file!", str(e))
-	    exit(1)
+        except Exception as e:
+            print("Failed to read the file!", str(e))
+            exit(1)
 
 elif input_ex == "xml":
     try:
-	with open(arguments.input_file) as file_xml:
-	    data = xmltodict.parse(file_xml.read())
+        with open(arguments.input_file) as file_xml:
+            data = xmltodict.parse(file_xml.read())
     except xmltodict.ExpatError as e:
-	print("Invalid file format.", str(e))
-	exit(1)
+        print("Invalid file format.", str(e))
+        exit(1)
 
 
 def same_ex():
@@ -61,12 +61,12 @@ def json_xml():
 
 def json_yaml():
     with open(arguments.output_file, 'w') as file:
-	yaml.dump(data, file, indent=4)
+        yaml.dump(data, file, indent=4)
 
 
 def yaml_json():
     with open(arguments.output_file, 'w') as file:
-	json.dump(data, file, indent=4)
+        json.dump(data, file, indent=4)
 
 
 def yaml_xml():
@@ -78,16 +78,15 @@ def yaml_xml():
 def xml_json():
     jdata = json.dumps(data, indent=4)
     with open(arguments.output_file, "w") as file_json:
-	file_json.write(jdata)
-	file_json.close()
+        file_json.write(jdata)
+        file_json.close()
 
 
 def xml_yaml():
     ydata = yaml.dump(data, indent=4)
     with open(arguments.output_file, "w") as file_yaml:
-	file_yaml.write(ydata)
-	file_yaml.close()
-
+        file_yaml.write(ydata)
+        file_yaml.close()
 
 
 if input_ex == output_ex:
@@ -95,30 +94,30 @@ if input_ex == output_ex:
 
 elif input_ex == 'json':
     if output_ex == 'yml':
-	print("You are converting: json -> yml")
-	json_yaml()
+        print("You are converting: json -> yml")
+        json_yaml()
 
     elif output_ex == 'xml':
-	print("You are converting: json -> xml")
-	json_xml()
+        print("You are converting: json -> xml")
+        json_xml()
 
 elif input_ex == 'yml':
     if output_ex == 'json':
-	print("You are converting yaml -> json")
-	yaml_json()
+        print("You are converting yaml -> json")
+        yaml_json()
 
     elif output_ex == 'xml':
-	print("You are converting yaml -> xml")
-	yaml_xml()
+        print("You are converting yaml -> xml")
+        yaml_xml()
 
 elif input_ex == 'xml':
     if output_ex == 'json':
-	print("You are converting xml -> json")
-	xml_json()
+        print("You are converting xml -> json")
+        xml_json()
 
     elif output_ex == 'yml':
-	print("You are converting xml -> yaml")
-	xml_yaml()
+        print("You are converting xml -> yaml")
+        xml_yaml()
 
 else:
     print("Something gone wrong...")

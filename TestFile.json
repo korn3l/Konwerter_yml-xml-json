@@ -1,0 +1,11 @@
+{
+  "imie": "Peter",
+  "nazwisko": "Griffin",
+  "wiek": 40,
+  "adres": {
+    "ulica": "Main Street",
+    "miasto": "Quahog",
+    "kod_pocztowy": "00-001"
+  },
+  "zainteresowania": ["programming", "sport", "music"]
+}
