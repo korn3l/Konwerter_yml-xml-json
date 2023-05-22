@@ -33,7 +33,7 @@ elif input_ex == "yml":
 	    data = yaml.safe_load(file)
 
 	    except Exception as e:
-		print("Failed to read the file", str(e))
+		print("Failed to read the file!", str(e))
 		exit(1)
 
 def same_ex():
