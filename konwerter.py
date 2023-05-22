@@ -70,3 +70,17 @@ def yaml_xml():
     xml_file = open(arguments.output_file, "w")
     xmltodict.unparse(data, output=xml_file, pretty=True)
     xml_file.close()
+
+
+def xml_json():
+    jdata = json.dumps(data, indent=4)
+    with open(arguments.output_file, "w") as file_json:
+	file_json.write(jdata)
+	file_json.close()
+
+
+def xml_yaml():
+    ydata = yaml.dump(data, indent=4)
+    with open(arguments.output_file, "w") as file_yaml:
+	file_yaml.write(ydata)
+	file_yaml.close()
