@@ -24,17 +24,18 @@ if input_ex == 'json':
         try:
 	    data = json.load(file)
 	except json.JSONDecodeError as e:
-	    print("Invalid filr format!", str(e))
+	    print("Invalid file format!", str(e))
 	    exit(1)
 
 elif input_ex == "yml":
-    with open_arguments.input_file, 'r') as file:
+    with open(arguments.input_file, 'r') as file:
 	try:
 	    data = yaml.safe_load(file)
 
-	    except Exception as e:
-		print("Failed to read the file!", str(e))
-		exit(1)
+	except Exception as e:
+	    print("Failed to read the file!", str(e))
+	    exit(1)
+
 
 def same_ex():
     print("Format of input and output files is the same")
@@ -43,10 +44,21 @@ def same_ex():
 
 def json_xml():
     file_xml = open(arguments.output_file, "w")
-    xmltodict.unparse(data, output=xml_file, pretty=True)
+    xmltodict.unparse(data, output=file_xml, pretty=True)
     file_xml.close()
 
 
 def json_yaml():
     with open(arguments.output_file, 'w') as file:
 	yaml.dump(data, file, indent=4)
+
+
+def yaml_json():
+    with open(arguments.output_file, 'w') as file:
+	json.dump(data, file, indent=4)
+
+
+def yaml_xml():
+    xml_file = open(arguments.output_file, "w")
+    xmltodict.unparse(data, output=xml_file, pretty=True)
+    xml_file.close()
