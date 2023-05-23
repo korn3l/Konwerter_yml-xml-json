@@ -20,7 +20,7 @@ jobs:
       
       - name: installPIP
         run: |
-          .github/workflows/data.bat/
+          .github/workflows/data.bat
           ./installResources.bat
         
       - name: Set up Python
