@@ -29,7 +29,7 @@ jobs:
           python-version: 3.11
 
       - name: Build
-        run: .github/workflows/runAsExe.bat
+        run: .github/workflows/runAsExe.ps1
         
       - name: Send
         uses: actions/upload-artifact@v3
