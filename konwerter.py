@@ -11,7 +11,7 @@ parser.add_argument('output_file', type=str, help='Output file.')
 
 arguments = parser.parse_args()
 
-if not (os.path.isfile(arguments.input_file)):
+if not os.path.isfile(arguments.input_file):
     print(f"Input file: {arguments.input_file} is invalid")
 else:
     print(f"Input file: {arguments.input_file} is valid :-)")
@@ -54,9 +54,9 @@ def same_ex():
 
 
 def json_xml():
-    file_xml = open(arguments.output_file, "w")
-    xmltodict.unparse(data, output=file_xml, pretty=True)
-    file_xml.close()
+    with open(arguments.output_file, 'w') as file_xml:
+        xml_data = xmltodict.unparse({'root': data}, pretty=True)
+        file_xml.write(xml_data)
 
 
 def json_yaml():
@@ -70,23 +70,21 @@ def yaml_json():
 
 
 def yaml_xml():
-    xml_file = open(arguments.output_file, "w")
-    xmltodict.unparse(data, output=xml_file, pretty=True)
-    xml_file.close()
+    with open(arguments.output_file, 'w') as file_xml:
+        xml_data = xmltodict.unparse(data, pretty=True)
+        file_xml.write(xml_data)
 
 
 def xml_json():
     jdata = json.dumps(data, indent=4)
     with open(arguments.output_file, "w") as file_json:
         file_json.write(jdata)
-        file_json.close()
 
 
 def xml_yaml():
     ydata = yaml.dump(data, indent=4)
     with open(arguments.output_file, "w") as file_yaml:
         file_yaml.write(ydata)
-        file_yaml.close()
 
 
 if input_ex == output_ex:
