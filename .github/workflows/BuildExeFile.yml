@@ -20,7 +20,7 @@ jobs:
       
       - name: installPIP
         run: |
-          ./data.bat
+          .github/workflows/data.bat/
           ./installResources.bat
         
       - name: Set up Python
@@ -29,7 +29,7 @@ jobs:
           python-version: 3.11
 
       - name: Build
-        run: ./runAsExe.bat
+        run: .github/workflows/runAsExe.bat
         
       - name: Send
         uses: actions/upload-artifact@v3
