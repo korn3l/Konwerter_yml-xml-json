@@ -3,6 +3,7 @@ import os
 import json
 import yaml
 import xmltodict
+import sys
 
 parser = argparse.ArgumentParser(description='XML, JSON, YML Converter!')
 
