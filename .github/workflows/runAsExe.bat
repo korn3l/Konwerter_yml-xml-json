@@ -1,1 +1,1 @@
-pyinstaller --onefile plik.py
+pyinstaller --onefile konwerter.py
